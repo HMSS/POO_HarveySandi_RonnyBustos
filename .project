@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>POO_HarveySandi_RonnyBustos</name>
-	<comment></comment>
+	<comment>@key 32303037303533312D313020504F4F5F48617276657953616E64695F526F6E6E79427573746F732F526F6E6E79 </comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -10,8 +10,14 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>com.soyatec.additional.Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>com.soyatec.additional.Nature</nature>
 	</natures>
 </projectDescription>
