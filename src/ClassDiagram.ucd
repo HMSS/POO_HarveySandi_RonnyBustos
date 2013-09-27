@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="ClassDiagram" size="1300,641" id="" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D313020504F4F5F48617276657953616E64695F526F6E6E79427573746F73">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="ClassDiagram" size="1300,641" id="" metadata="uml2-1.0" initialized="true" scrolledX="101" tag="10" key="32303037303533312D313020504F4F5F48617276657953616E64695F526F6E6E79427573746F73">
   <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.11/@sourceConnections.0" name="Person" location="420,15" size="136,75" id="/Person" runTimeClassModel="identification,name">
     <children xsi:type="editmodel:CompartmentEditModel" size="113,36">
       <children xsi:type="editmodel:AttributeEditModel" name="identification" location="-11,-8" id="/Person#identification"/>
@@ -16,20 +16,20 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Professor@professor+/Department@department" source="//@children.1" target="//@children.11" targetEnd="//@children.1/@sourceConnections.0/@children.1" label="//@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="department" location="89,0" id="/Professor@professor+/Department@department|/Department#department" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Department@department+/Professor@professor" source="//@children.1" target="//@children.11" targetEnd="//@children.1/@sourceConnections.0/@children.1" label="//@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="department" location="89,0" id="/Department@department+/Professor@professor|/Department#department" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - department" location="411,265" size="64,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="1" location="391,265" size="6,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="119,111" id="/Professor@professor+/Department@department|/Professor#professor"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="119,111" id="/Department@department+/Professor@professor|/Professor#professor"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Subject@subject+/Department@department" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.1/@children.1" label="//@children.1/@sourceConnections.1/@children.2" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="department" location="78,75" id="/Subject@subject+/Department@department|/Department#department" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.1/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Department@department+/Subject@subject" source="//@children.1" target="//@children.4" targetEnd="//@children.1/@sourceConnections.1/@children.1" label="//@children.1/@sourceConnections.1/@children.2" sourceEnd="//@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="department" location="78,75" id="/Department@department+/Subject@subject|/Department#department" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.1/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - department" location="400,368" size="64,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="1" location="380,368" size="6,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="subject" location="78,0" id="/Subject@subject+/Department@department|/Subject#subject"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="subject" location="78,0" id="/Department@department+/Subject@subject|/Subject#subject"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Curriculum@curriculums+/Department@department" source="//@children.1" target="//@children.16" targetEnd="//@children.1/@sourceConnections.2/@children.1" label="//@children.1/@sourceConnections.2/@children.2" sourceEnd="//@children.1/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
@@ -65,17 +65,17 @@
   <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.5/@sourceConnections.0 //@children.7/@sourceConnections.0 //@children.1/@sourceConnections.1 //@children.13/@sourceConnections.0" name="Subject" location="315,395" size="157,93" id="/Subject" runTimeClassModel="department,name,credits">
     <children xsi:type="editmodel:CompartmentEditModel" size="134,54">
       <children xsi:type="editmodel:AttributeEditModel" name="credits" id="/Subject#credits"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="department" id="/Subject@subject+/Department@department|/Department#department"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="department" id="/Department@department+/Subject@subject|/Department#department"/>
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="/Subject#name"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Schedule@suggestedSchedule+/Subject@subject" source="//@children.4" target="//@children.14" targetEnd="//@children.4/@sourceConnections.0/@children.1" label="//@children.4/@sourceConnections.0/@children.2" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="subject" location="0,10" id="/Schedule@suggestedSchedule+/Subject@subject|/Subject#subject" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Subject@subject+/Schedule@suggestedSchedule" source="//@children.4" target="//@children.14" targetEnd="//@children.4/@sourceConnections.0/@children.1" label="//@children.4/@sourceConnections.0/@children.2" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="subject" location="0,10" id="/Subject@subject+/Schedule@suggestedSchedule|/Subject#subject" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - subject" location="263,412" size="45,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="1" location="302,384" size="6,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="suggestedSchedule" location="84,91" id="/Schedule@suggestedSchedule+/Subject@subject|/Schedule#suggestedSchedule"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="suggestedSchedule" location="84,91" id="/Subject@subject+/Schedule@suggestedSchedule|/Schedule#suggestedSchedule"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
@@ -106,7 +106,7 @@
   <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.9/@sourceConnections.0" name="Practical" location="380,546" size="222,75" id="/Practical" runTimeClassModel="operatingSystem,supportMaterial">
     <children xsi:type="editmodel:CompartmentEditModel" size="199,36">
       <children xsi:type="editmodel:AttributeEditModel" name="operatingSystem" id="/Practical#operatingSystem"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="supportMaterial" id="/Practical@practical+/SupportMaterial@supportMaterial|/SupportMaterial#supportMaterial"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="supportMaterial" id="/SupportMaterial@supportMaterial+/Practical@practical|/SupportMaterial#supportMaterial"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
@@ -123,12 +123,12 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/PracticalClassRoom@practicalClassRoom+/TechnicalEquipment@technicalEquipment" source="//@children.8" target="//@children.12" targetEnd="//@children.8/@sourceConnections.0/@children.1" label="//@children.8/@sourceConnections.0/@children.2" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="technicalEquipment" location="0,37" id="/PracticalClassRoom@practicalClassRoom+/TechnicalEquipment@technicalEquipment|/TechnicalEquipment#technicalEquipment" attachSource="true" multiplicityLabel="//@children.8/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.8/@sourceConnections.0/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/TechnicalEquipment@technicalEquipment+/PracticalClassRoom@practicalClassRoom" source="//@children.8" target="//@children.12" targetEnd="//@children.8/@sourceConnections.0/@children.1" label="//@children.8/@sourceConnections.0/@children.2" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="technicalEquipment" location="0,37" id="/TechnicalEquipment@technicalEquipment+/PracticalClassRoom@practicalClassRoom|/TechnicalEquipment#technicalEquipment" attachSource="true" multiplicityLabel="//@children.8/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.8/@sourceConnections.0/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - technicalEquipment" location="1000,187" size="102,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="*" location="1098,215" size="4,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="practicalClassRoom" location="259,28" id="/PracticalClassRoom@practicalClassRoom+/TechnicalEquipment@technicalEquipment|/PracticalClassRoom#practicalClassRoom"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="practicalClassRoom" location="259,28" id="/TechnicalEquipment@technicalEquipment+/PracticalClassRoom@practicalClassRoom|/PracticalClassRoom#practicalClassRoom"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
@@ -139,12 +139,12 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/Practical@practical+/SupportMaterial@supportMaterial" source="//@children.9" target="//@children.7" targetEnd="//@children.9/@sourceConnections.0/@children.1" label="//@children.9/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="supportMaterial" location="0,28" id="/Practical@practical+/SupportMaterial@supportMaterial|/SupportMaterial#supportMaterial" attachSource="true" multiplicityLabel="//@children.9/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.9/@sourceConnections.0/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="/SupportMaterial@supportMaterial+/Practical@practical" source="//@children.9" target="//@children.7" targetEnd="//@children.9/@sourceConnections.0/@children.1" label="//@children.9/@sourceConnections.0/@children.2" sourceEnd="//@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="supportMaterial" location="0,28" id="/SupportMaterial@supportMaterial+/Practical@practical|/SupportMaterial#supportMaterial" attachSource="true" multiplicityLabel="//@children.9/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.9/@sourceConnections.0/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - supportMaterial" location="626,562" size="84,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="*" location="706,590" size="4,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="practical" location="222,37" id="/Practical@practical+/SupportMaterial@supportMaterial|/Practical#practical"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="practical" location="222,37" id="/SupportMaterial@supportMaterial+/Practical@practical|/Practical#practical"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
@@ -162,12 +162,12 @@
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" showMethodsParameterKinds="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true" showAssociationMember="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.14/@sourceConnections.1 //@children.14/@sourceConnections.0" name="Professor" location="285,125" size="218,111" id="/Professor" runTimeClassModel="establishedSchedule,test(),subject,department,suggestedSchedule">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0 //@children.14/@sourceConnections.1 //@children.14/@sourceConnections.0" name="Professor" location="285,125" size="218,111" id="/Professor" runTimeClassModel="establishedSchedule,test(),department,subject,suggestedSchedule">
     <children xsi:type="editmodel:CompartmentEditModel" size="195,72">
-      <children xsi:type="editmodel:AttributeEditModel" name="department" id="/Professor@professor+/Department@department|/Department#department"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="establishedSchedule" id="/Professor@professor+/Schedule@establishedSchedule|/Schedule#establishedSchedule"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="department" id="/Department@department+/Professor@professor|/Department#department"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="establishedSchedule" id="/Schedule@establishedSchedule+/Professor@professor|/Schedule#establishedSchedule"/>
       <children xsi:type="editmodel:AttributeEditModel" name="subject" id="/Subject@subject+/Professor@professor|/Subject#subject"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="suggestedSchedule" id="/Professor@professor+/Schedule@suggestedSchedule|/Schedule#suggestedSchedule"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="suggestedSchedule" id="/Schedule@suggestedSchedule+/Professor@professor|/Schedule#suggestedSchedule"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="48,18"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
@@ -179,7 +179,7 @@
   </children>
   <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.8/@sourceConnections.0" name="PracticalClassRoom" location="701,180" size="259,57" id="/PracticalClassRoom" runTimeClassModel="technicalEquipment">
     <children xsi:type="editmodel:CompartmentEditModel" size="236,18">
-      <children xsi:type="editmodel:AttributeEditModel" name="technicalEquipment" id="/PracticalClassRoom@practicalClassRoom+/TechnicalEquipment@technicalEquipment|/TechnicalEquipment#technicalEquipment"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="technicalEquipment" id="/TechnicalEquipment@technicalEquipment+/PracticalClassRoom@practicalClassRoom|/TechnicalEquipment#technicalEquipment"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
@@ -210,24 +210,24 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="139,54">
       <children xsi:type="editmodel:AttributeEditModel" name="lesson" id="/Lesson@lesson+/Schedule@schedule1|/Lesson#lesson"/>
       <children xsi:type="editmodel:AttributeEditModel" name="schedule" id="/Schedule@schedule+/Schedule@suggestedSchedule|/Schedule#schedule"/>
-      <children xsi:type="editmodel:AttributeEditModel" name="subject" id="/Schedule@suggestedSchedule+/Subject@subject|/Subject#subject"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="subject" id="/Subject@subject+/Schedule@suggestedSchedule|/Subject#subject"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Professor@professor+/Schedule@suggestedSchedule" source="//@children.14" target="//@children.11" targetEnd="//@children.14/@sourceConnections.0/@children.1" label="//@children.14/@sourceConnections.0/@children.2" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="suggestedSchedule" location="123,0" id="/Professor@professor+/Schedule@suggestedSchedule|/Schedule#suggestedSchedule" attachSource="true" multiplicityLabel="//@children.14/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.14/@sourceConnections.0/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Schedule@suggestedSchedule+/Professor@professor" source="//@children.14" target="//@children.11" targetEnd="//@children.14/@sourceConnections.0/@children.1" label="//@children.14/@sourceConnections.0/@children.2" sourceEnd="//@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="suggestedSchedule" location="123,0" id="/Schedule@suggestedSchedule+/Professor@professor|/Schedule#suggestedSchedule" attachSource="true" multiplicityLabel="//@children.14/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.14/@sourceConnections.0/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - suggestedSchedule" location="10,104" size="106,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="*" location="130,104" size="4,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="0,4" id="/Professor@professor+/Schedule@suggestedSchedule|/Professor#professor"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="0,4" id="/Schedule@suggestedSchedule+/Professor@professor|/Professor#professor"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
-    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Professor@professor+/Schedule@establishedSchedule" source="//@children.14" target="//@children.11" targetEnd="//@children.14/@sourceConnections.1/@children.1" label="//@children.14/@sourceConnections.1/@children.2" sourceEnd="//@children.14/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="establishedSchedule" location="161,75" id="/Professor@professor+/Schedule@establishedSchedule|/Schedule#establishedSchedule" attachSource="true" multiplicityLabel="//@children.14/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.14/@sourceConnections.1/@children.0/@children.0" navigable="true">
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Schedule@establishedSchedule+/Professor@professor" source="//@children.14" target="//@children.11" targetEnd="//@children.14/@sourceConnections.1/@children.1" label="//@children.14/@sourceConnections.1/@children.2" sourceEnd="//@children.14/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="establishedSchedule" location="161,75" id="/Schedule@establishedSchedule+/Professor@professor|/Schedule#establishedSchedule" attachSource="true" multiplicityLabel="//@children.14/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.14/@sourceConnections.1/@children.0/@children.0" navigable="true">
         <children xsi:type="editmodel:LabelEditModel" name=" - establishedSchedule" location="169,207" size="110,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="*" location="169,179" size="4,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="0,61" id="/Professor@professor+/Schedule@establishedSchedule|/Professor#professor"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="professor" location="0,61" id="/Schedule@establishedSchedule+/Professor@professor|/Professor#professor"/>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" id="/Lesson@lesson+/Schedule@schedule1" source="//@children.14" target="//@children.15" targetEnd="//@children.14/@sourceConnections.2/@children.1" label="//@children.14/@sourceConnections.2/@children.2" sourceEnd="//@children.14/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
