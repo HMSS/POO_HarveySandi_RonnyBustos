@@ -5,8 +5,21 @@ public abstract class ClassRoom {
 
 	/**
 	 * @uml.property  name="name"
+	 * @uml.property  name="location"
+	 * @uml.property  name="number"
+	 * @uml.property  name="capacity"
 	 */
 	private String name;
+	private String location;
+	private int capacity;
+	private int number;
+	
+	public ClassRoom(String name, String location, int capacity, int number) {
+		this.name = name;
+		this.location = location;
+		this.capacity = capacity;
+		this.number = number;
+	}
 
 	/**
 	 * Getter of the property <tt>name</tt>
@@ -24,12 +37,7 @@ public abstract class ClassRoom {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @uml.property  name="location"
-	 */
-	private String location;
+	}	
 
 	/**
 	 * Getter of the property <tt>location</tt>
@@ -47,12 +55,7 @@ public abstract class ClassRoom {
 	 */
 	public void setLocation(String location) {
 		this.location = location;
-	}
-
-	/**
-	 * @uml.property  name="number"
-	 */
-	private int number;
+	}	
 
 	/**
 	 * Getter of the property <tt>number</tt>
@@ -71,11 +74,6 @@ public abstract class ClassRoom {
 	public void setNumber(int number) {
 		this.number = number;
 	}
-
-	/**
-	 * @uml.property  name="capacity"
-	 */
-	private int capacity;
 
 	/**
 	 * Getter of the property <tt>capacity</tt>

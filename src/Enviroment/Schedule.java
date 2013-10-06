@@ -130,4 +130,28 @@ public class Schedule {
 		this.lesson.clear();
 	}
 
+	/**
+	 * @uml.property  name="subject"
+	 * @uml.associationEnd  inverse="schedule:Enviroment.Subject"
+	 */
+	private Subject subject;
+
+	/**
+	 * Getter of the property <tt>subject</tt>
+	 * @return  Returns the subject.
+	 * @uml.property  name="subject"
+	 */
+	public Subject getSubject() {
+		return subject;
+	}
+
+	/**
+	 * Setter of the property <tt>subject</tt>
+	 * @param subject  The subject to set.
+	 * @uml.property  name="subject"
+	 */
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+
 }

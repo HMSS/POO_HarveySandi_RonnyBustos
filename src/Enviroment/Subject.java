@@ -3,10 +3,19 @@ package Enviroment;
 
 public abstract class Subject {
 
-	/**
-	 * @uml.property  name="name"
-	 */
 	private String name;
+	private Department department;
+	private byte credits;
+	private Professor professor = new Enviroment.Professor();
+	private ClassRoom classRoom;
+	
+	public Subject(String name, Department department, byte credits, Professor professor, ClassRoom classRoom) {
+		this.name = name;
+		this.department = department;
+		this.credits = credits;
+		this.professor = professor;
+		this.classRoom = classRoom;
+	}
 
 	/**
 	 * Getter of the property <tt>name</tt>
@@ -25,11 +34,6 @@ public abstract class Subject {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * @uml.property  name="credits"
-	 */
-	private byte credits;
 
 	/** 
 	 * Getter of the property <tt>credits</tt>
@@ -50,12 +54,6 @@ public abstract class Subject {
 	}
 
 	/**
-	 * @uml.property  name="professor"
-	 * @uml.associationEnd  multiplicity="(1 1)" inverse="subject:Enviroment.Professor"
-	 */
-	private Professor professor = new Enviroment.Professor();
-
-	/**
 	 * Getter of the property <tt>professor</tt>
 	 * @return  Returns the professor.
 	 * @uml.property  name="professor"
@@ -74,12 +72,6 @@ public abstract class Subject {
 	}
 
 	/**
-	 * @uml.property  name="classRoom"
-	 * @uml.associationEnd  inverse="subject:Enviroment.ClassRoom"
-	 */
-	private ClassRoom classRoom;
-
-	/**
 	 * Getter of the property <tt>classRoom</tt>
 	 * @return  Returns the classRoom.
 	 * @uml.property  name="classRoom"
@@ -96,12 +88,6 @@ public abstract class Subject {
 	public void setClassRoom(ClassRoom classRoom) {
 		this.classRoom = classRoom;
 	}
-
-	/**
-	 * @uml.property  name="department"
-	 * @uml.associationEnd  inverse="subject:Enviroment.Department"
-	 */
-	private Department department;
 
 	/**
 	 * Getter of the property <tt>department</tt>

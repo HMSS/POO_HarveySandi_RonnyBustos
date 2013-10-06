@@ -5,8 +5,10 @@ public abstract class Person {
 
 	/**
 	 * @uml.property  name="identification"
+	 * @uml.property  name="name"
 	 */
 	private String identification;
+	private String name;
 
 	/**
 	 * Getter of the property <tt>identification</tt>
@@ -25,11 +27,6 @@ public abstract class Person {
 	public void setIdentification(String identification) {
 		this.identification = identification;
 	}
-
-	/**
-	 * @uml.property  name="name"
-	 */
-	private String name;
 
 	/**
 	 * Getter of the property <tt>name</tt>

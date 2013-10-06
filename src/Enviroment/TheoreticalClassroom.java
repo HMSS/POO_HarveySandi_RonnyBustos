@@ -7,6 +7,12 @@ public class TheoreticalClassroom extends ClassRoom {
 	 * @uml.property  name="airConditioning"
 	 */
 	private Boolean airConditioning;
+	
+	public TheoreticalClassroom(Boolean airConditioning, Boolean multimedia, String name, String location, int capacity, int number) {
+		super(name,location,capacity,number);
+		this.airConditioning = airConditioning;
+		this.multimedia = multimedia;
+	}
 
 	/**
 	 * Getter of the property <tt>airConditioning</tt>
