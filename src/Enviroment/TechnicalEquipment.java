@@ -5,8 +5,15 @@ public class TechnicalEquipment {
 
 	/**
 	 * @uml.property  name="name"
+	 * @uml.property  name="amount"
 	 */
 	private String name;
+	private int amount;
+	
+	public TechnicalEquipment(String name, int amount) {
+		this.name = name;
+		this.amount = amount;
+	}
 
 	/**
 	 * Getter of the property <tt>name</tt>
@@ -25,11 +32,6 @@ public class TechnicalEquipment {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	/**
-	 * @uml.property  name="amount"
-	 */
-	private int amount;
 
 	/**
 	 * Getter of the property <tt>amount</tt>
