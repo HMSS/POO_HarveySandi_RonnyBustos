@@ -6,6 +6,10 @@ public class Schedule {
 	
 	private ArrayList<ScheduleSection> sections = new ArrayList<ScheduleSection>();
 
+	public Schedule() {
+		this.initialize();
+	}
+	
 	public void initialize() {
 		char[] days = new char[] { 'L','K','M','J','V' };
 		char[] blocks = new char[] { 'A','B','C','D','E','F','G','H','I','J','K','L','M' };

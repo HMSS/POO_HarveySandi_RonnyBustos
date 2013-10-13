@@ -11,6 +11,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		GUIController controller = new GUIController();
 		controller.initialize();
+		controller.buildSemesterSchedule("1");
         /*Login ventana = new Login();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);*/
