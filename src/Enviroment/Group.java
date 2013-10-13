@@ -42,9 +42,9 @@ public class Group {
 		this.lessons.add(lesson);
 	}
 	
-	public void removeLesson(char day, char block) {
+	public void removeLesson(char day, char begin, char end) {
 		for (int i = 0; i < lessons.size(); i++) {
-			if ((lessons.get(i).getDay() == day)&&(lessons.get(i).getBlock() == block))
+			if ((lessons.get(i).getDay() == day)&&(lessons.get(i).getBegin() == begin)&&(lessons.get(i).getEnd() == end))
 				lessons.remove(i);
 		}
 	}
@@ -55,6 +55,10 @@ public class Group {
 	
 	public int getGroupNumber() {
 		return this.groupNumber;
+	}
+	
+	public ArrayList<Lesson> getLessons() {
+		return this.lessons;
 	}
 
 }

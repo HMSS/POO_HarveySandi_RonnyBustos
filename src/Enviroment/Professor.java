@@ -43,18 +43,22 @@ public class Professor extends Person {
 		this.groups.add(new Group(subject));
 	}
 	
-	public void addLesson(char day, char block, int group) {
+	public void addLesson(char day, char begin, char end, int group) {
 		for (int i = 0; i < groups.size(); i++) {
 			if (groups.get(i).getGroupNumber() == group)
-				groups.get(i).addLesson(new Lesson(day,block));
+				groups.get(i).addLesson(new Lesson(day,begin,end));
 		}
 	}
 	
-	public void removeLesson(char day, char block, int group) {
+	public void removeLesson(char day, char begin, char end, int group) {
 		for (int i = 0; i < groups.size(); i++) {
 			if (groups.get(i).getGroupNumber() == group)
-				groups.get(i).removeLesson(day,block);
+				groups.get(i).removeLesson(day,begin,end);
 		}
+	}
+	
+	public ArrayList<Group> getGroups() {
+		return this.groups;
 	}
 	
 }

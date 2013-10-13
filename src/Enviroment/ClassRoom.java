@@ -26,7 +26,7 @@ public abstract class ClassRoom {
 		char[] blocks = new char[] { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N' };
 		for (int i = 0; i < days.length; i++) {
 			for (int a = 0; a < blocks.length; a++) {
-				this.availability.add(new Lesson(days[i],blocks[a]));
+				this.availability.add(new Lesson(days[i],blocks[a],blocks[a+1]));
 			}
 		}
 	}
@@ -103,12 +103,16 @@ public abstract class ClassRoom {
 		this.capacity = capacity;
 	}
 	
-	public void discardAvailability(char day, char block) {
+	public void discardAvailability(char day, char begin) {
 		for (int i = 0; i < availability.size(); i++) {
-			if ((availability.get(i).getDay() == day) && (availability.get(i).getBlock() == block)) {
+			if ((availability.get(i).getDay() == day) && (availability.get(i).getBegin() == begin)) {
 				availability.remove(i);
 			}
 		}
+	}
+	
+	public ArrayList<Lesson> getAvailability() {
+		return this.availability;
 	}
 
 }

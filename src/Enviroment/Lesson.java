@@ -6,11 +6,12 @@ public class Lesson {
 	/**
 	 * @uml.property  name="day"
 	 */
-	private char day;
+	private char day, begin, end;
 	
-	public Lesson(char day, char block) {
+	public Lesson(char day, char begin, char end) {
 		this.day = day;
-		this.block = block;
+		this.begin = begin;
+		this.end = end;
 	}
 
 	/**
@@ -32,17 +33,12 @@ public class Lesson {
 	}
 
 	/**
-	 * @uml.property  name="block"
-	 */
-	private char block;
-
-	/**
 	 * Getter of the property <tt>block</tt>
 	 * @return  Returns the block.
 	 * @uml.property  name="block"
 	 */
-	public char getBlock() {
-		return block;
+	public char getBegin() {
+		return begin;
 	}
 
 	/**
@@ -50,8 +46,21 @@ public class Lesson {
 	 * @param block  The block to set.
 	 * @uml.property  name="block"
 	 */
-	public void setBlock(char block) {
-		this.block = block;
+	public void setBegin(char begin) {
+		this.begin = begin;
+	}
+	
+	public char getEnd() {
+		return end;
+	}
+
+	/**
+	 * Setter of the property <tt>block</tt>
+	 * @param block  The block to set.
+	 * @uml.property  name="block"
+	 */
+	public void setEnd(char end) {
+		this.end = end;
 	}
 
 }

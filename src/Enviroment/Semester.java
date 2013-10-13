@@ -49,17 +49,81 @@ public class Semester {
 		}
 	}
 	
-	public ArrayList<String> buildSchedule() {
+	public ArrayList<String> buildSchedule(ArrayList<ClassRoom> classRooms) {
+		this.schedules.add(new Schedule());
 		ArrayList<String> errors = new ArrayList<String>();
 		for (int s = 0; s < subjects.size(); s++) {
-			for (int p = 0; p < subjects.get(s).getProfessors().size(); p++) {
-				
+			Subject subject = subjects.get(s);
+			for (int p = 0; p < subject.getProfessors().size(); p++) {
+				Professor professor = subject.getProfessors().get(p);
+				for (int g = 0; g < professor.getGroups().size(); g++) {
+					if (professor.getGroups().get(g).getSubject().getName().equals(subject.getName())) {
+						errors = checkForSchedule(professor.getGroups().get(g),classRooms);
+						if (resultCheckForSchedule.equals(""))
+							continue;
+						else
+							errors.add(resultCheckForSchedule);
+					}	
+				}
 			}
 		}
 		return errors;
 	}
 	
-	private boolean verifySectionAvailability() {
+	private boolean verifySectionAvailability(char begin, char end, char day) {
 		return true;
+	}
+	
+	private ArrayList<String> checkForSchedule(Group group, ArrayList<ClassRoom> classRooms) {
+		ArrayList<String> errors = new ArrayList<String>();
+		for (int l = 0; l < group.getLessons().size(); l++) {
+			Lesson lesson = group.getLessons().get(l);
+			if (verifySectionAvailability(lesson.getBegin(),lesson.getEnd(),lesson.getDay())) {
+				if (checkForClassRoom(group.getSubject().getClass().getSimpleName(),classRooms,lesson.getBegin(),lesson.getEnd(),lesson.getDay()) == null) {
+					String resultExpandSearch = expandSearch(classRooms);
+					if (resultExpandSearch.equals(""))
+						continue;
+					else
+						errors.add(resultExpandSearch);
+				}
+				else
+					continue;
+			}
+			String resultExpandSearch = expandSearch(classRooms);
+			if (resultExpandSearch.equals(""))
+				continue;
+			else
+				errors.add(resultExpandSearch);
+		}
+		return null;
+	}
+	
+	private ClassRoom checkForClassRoom(String classRoomType, ArrayList<ClassRoom> classRooms, char begin, char end, char day) {
+		for (int c = 0; c < classRooms.size(); c++) {
+			ClassRoom classRoom = classRooms.get(0);
+			if (classRoom.getClass().getSimpleName().equals(classRoomType)) {
+				if (isClassRoomAvailable(classRoom.getAvailability(),begin,end,day)) 
+					return classRoom;
+				else
+					continue;
+			}
+		}
+		return null;
+	}
+	
+	private boolean isClassRoomAvailable(ArrayList<Lesson> availability, char begin, char end, char day) {
+		for (int a = 0; a < availability.size(); a++) {
+			Lesson sectionAvailable = availability.get(a);
+			if ((sectionAvailable.getDay() == day)&&(sectionAvailable.getBegin() == begin)&&(sectionAvailable.getEnd() == end))
+				return true;
+			else
+				continue;
+			
+		}
+		return false;
+	}
+	
+	private String expandSearch(ArrayList<ClassRoom> classRooms) {
+		return "";
 	}
 }

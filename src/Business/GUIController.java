@@ -96,29 +96,29 @@ public class GUIController {
 		subjectResult.addProfessor(professorResult);
 	}
 
-	public void addLesson(String day, String block, String group) {
-		((Professor) userSession).addLesson(day.charAt(0), block.charAt(0),
+	public void addLesson(String day, String begin, String end, String group) {
+		((Professor) userSession).addLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
 				Integer.parseInt(group));
 	}
 
-	public void addLesson(String professor, String day, String block,
+	public void addLesson(String professor, String day, String begin, String end, 
 			String group) {
-		searchProfessor(professor).addLesson(day.charAt(0), block.charAt(0),
+		searchProfessor(professor).addLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
 				Integer.parseInt(group));
 	}
 
-	public void removeLesson(String day, String block, String group) {
-		((Professor) userSession).removeLesson(day.charAt(0), block.charAt(0),
+	public void removeLesson(String day, String begin, String end, String group) {
+		((Professor) userSession).removeLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
 				Integer.parseInt(group));
 	}
 
-	public void removeLesson(String professor, String day, String block,
+	public void removeLesson(String professor, String day, String begin, String end,
 			String group) {
-		searchProfessor(professor).removeLesson(day.charAt(0), block.charAt(0),
+		searchProfessor(professor).removeLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
 				Integer.parseInt(group));
 	}
 
-	public void clearSemester(int semester) {
+	public void clearSemester(String semester) {
 
 	}
 
