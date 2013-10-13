@@ -13,11 +13,13 @@ public class Semester {
 	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="semester:Enviroment.Subject"
 	 */
 	private byte number;
-	private ArrayList<Subject> subjects = new ArrayList<Subject>();
-	private ArrayList<Schedule> schedules = new ArrayList<Schedule>();
+	private ArrayList<Subject> subjects;
+	private ArrayList<Schedule> schedules;
 	
 	public Semester(byte number) {
 		this.number = number;
+		this.subjects = new ArrayList<Subject>();
+		this.schedules = new ArrayList<Schedule>();
 	}
 
 	/** 
