@@ -1,5 +1,7 @@
 package Enviroment;
 
+import java.util.ArrayList;
+
 
 public abstract class ClassRoom {
 
@@ -13,12 +15,20 @@ public abstract class ClassRoom {
 	private String location;
 	private int capacity;
 	private int number;
+	private ArrayList<Lesson> availability = new ArrayList<Lesson>();
 	
 	public ClassRoom(String name, String location, int capacity, int number) {
 		this.name = name;
 		this.location = location;
 		this.capacity = capacity;
 		this.number = number;
+		char[] days = new char[] { 'L','K','M','J','V' };
+		char[] blocks = new char[] { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N' };
+		for (int i = 0; i < days.length; i++) {
+			for (int a = 0; a < blocks.length; a++) {
+				this.availability.add(new Lesson(days[i],blocks[a]));
+			}
+		}
 	}
 
 	/**
@@ -91,6 +101,14 @@ public abstract class ClassRoom {
 	 */
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
+	}
+	
+	public void discardAvailability(char day, char block) {
+		for (int i = 0; i < availability.size(); i++) {
+			if ((availability.get(i).getDay() == day) && (availability.get(i).getBlock() == block)) {
+				availability.remove(i);
+			}
+		}
 	}
 
 }

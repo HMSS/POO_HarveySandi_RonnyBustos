@@ -8,8 +8,8 @@ public class Theoretical extends Subject {
 	 */
 	private String webpage;
 	
-	public Theoretical(String webpage, String name, Department department, byte credits, Professor professor, ClassRoom classRoom) {
-		super(name,department,credits,professor,classRoom);
+	public Theoretical(String webpage, String name, byte credits, ClassRoom classRoom) {
+		super(name,credits,classRoom);
 		this.webpage = webpage;
 	}
 

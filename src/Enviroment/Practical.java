@@ -12,8 +12,8 @@ public class Practical extends Subject {
 	 */
 	private String operatingSystem;
 	
-	public Practical(String operatingSystem, String name, Department department, byte credits, Professor professor, ClassRoom classRoom) {
-		super(name,department,credits,professor,classRoom);
+	public Practical(String operatingSystem, String name, byte credits, ClassRoom classRoom) {
+		super(name,credits,classRoom);
 		this.operatingSystem = operatingSystem;
 	}
 

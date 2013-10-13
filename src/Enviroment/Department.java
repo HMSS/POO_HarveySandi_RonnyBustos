@@ -10,6 +10,10 @@ public class Department {
 	 * @uml.property  name="name"
 	 */
 	private String name;
+	
+	public Department(String name) {
+		this.name = name;
+	}
 
 	/**
 	 * Getter of the property <tt>name</tt>

@@ -1,19 +1,18 @@
 package Enviroment;
 
+import java.util.ArrayList;
+
 
 public abstract class Subject {
 
 	private String name;
-	private Department department;
 	private byte credits;
-	private Professor professor = new Enviroment.Professor();
+	private ArrayList<Professor> professors = new ArrayList<Professor>();
 	private ClassRoom classRoom;
 	
-	public Subject(String name, Department department, byte credits, Professor professor, ClassRoom classRoom) {
+	public Subject(String name, byte credits, ClassRoom classRoom) {
 		this.name = name;
-		this.department = department;
 		this.credits = credits;
-		this.professor = professor;
 		this.classRoom = classRoom;
 	}
 
@@ -54,21 +53,12 @@ public abstract class Subject {
 	}
 
 	/**
-	 * Getter of the property <tt>professor</tt>
-	 * @return  Returns the professor.
-	 * @uml.property  name="professor"
-	 */
-	public Professor getProfessor() {
-		return professor;
-	}
-
-	/**
 	 * Setter of the property <tt>professor</tt>
 	 * @param professor  The professor to set.
 	 * @uml.property  name="professor"
 	 */
-	public void setProfessor(Professor professor) {
-		this.professor = professor;
+	public void addProfessor(Professor professor) {
+		this.professors.add(professor);
 	}
 
 	/**
@@ -89,22 +79,8 @@ public abstract class Subject {
 		this.classRoom = classRoom;
 	}
 
-	/**
-	 * Getter of the property <tt>department</tt>
-	 * @return  Returns the department.
-	 * @uml.property  name="department"
-	 */
-	public Department getDepartment() {
-		return department;
+	public ArrayList<Professor> getProfessors() {
+		return this.professors;
 	}
-
-	/**
-	 * Setter of the property <tt>department</tt>
-	 * @param department  The department to set.
-	 * @uml.property  name="department"
-	 */
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
+	
 }

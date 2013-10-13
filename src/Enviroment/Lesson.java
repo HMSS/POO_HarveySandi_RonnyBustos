@@ -7,6 +7,11 @@ public class Lesson {
 	 * @uml.property  name="day"
 	 */
 	private char day;
+	
+	public Lesson(char day, char block) {
+		this.day = day;
+		this.block = block;
+	}
 
 	/**
 	 * Getter of the property <tt>day</tt>
