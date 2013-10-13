@@ -8,6 +8,11 @@ public class SupportMaterial {
 	 */
 	private String name;
 
+	public SupportMaterial(String name){
+		this.name = name;
+	}
+	
+	
 	/**
 	 * Getter of the property <tt>name</tt>
 	 * @return  Returns the name.
