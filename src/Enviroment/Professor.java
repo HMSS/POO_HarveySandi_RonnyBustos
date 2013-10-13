@@ -39,20 +39,20 @@ public class Professor extends Person {
 		this.department = department;
 	}
 	
-	public void addGroup(Subject subject) {
-		this.groups.add(new Group(subject));
+	public void addGroup(Subject subject, int groupNumber) {
+		this.groups.add(new Group(subject,groupNumber));
 	}
 	
-	public void addLesson(char day, char begin, char end, int group) {
+	public void addLesson(char day, char begin, char end, int group, String subject) {
 		for (int i = 0; i < groups.size(); i++) {
-			if (groups.get(i).getGroupNumber() == group)
+			if ((groups.get(i).getGroupNumber() == group)&&(groups.get(i).getSubject().getName().equals(subject)))
 				groups.get(i).addLesson(new Lesson(day,begin,end));
 		}
 	}
 	
-	public void removeLesson(char day, char begin, char end, int group) {
+	public void removeLesson(char day, char begin, char end, int group, String subject) {
 		for (int i = 0; i < groups.size(); i++) {
-			if (groups.get(i).getGroupNumber() == group)
+			if (groups.get(i).getGroupNumber() == group&&(groups.get(i).getSubject().getName().equals(subject)))
 				groups.get(i).removeLesson(day,begin,end);
 		}
 	}
