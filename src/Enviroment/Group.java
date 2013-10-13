@@ -16,8 +16,9 @@ public class Group {
 	private Subject subject;
 	private int groupNumber;
 	
-	public Group(Subject subject) {
+	public Group(Subject subject, int groupNumber) {
 		this.subject = subject;
+		this.groupNumber = groupNumber;
 	}
 
 	/**

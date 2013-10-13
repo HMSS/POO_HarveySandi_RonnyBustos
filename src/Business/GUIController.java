@@ -46,15 +46,14 @@ public class GUIController {
 	}
 
 	public void addPracticalSubject(String operatingSystem, String name,
-			String credits, String professor, String classRoom) {
+			String credits) {
 		this.subjects.add(new Practical(operatingSystem, name, Byte
-				.valueOf(credits), searchClassRoom(classRoom)));
+				.valueOf(credits)));
 	}
 
 	public void addTheoreticalSubject(String webPage, String name,
-			String credits, String professor, String classRoom) {
-		this.subjects.add(new Theoretical(webPage, name, Byte.valueOf(credits),
-				searchClassRoom(classRoom)));
+			String credits) {
+		this.subjects.add(new Theoretical(webPage, name, Byte.valueOf(credits)));
 	}
 
 	public void addDepartment(String name) {
@@ -80,46 +79,45 @@ public class GUIController {
 	}
 
 	public void addCoordinator(String password, String identification,
-			String name, String department) {
+			String name) {
 		this.users.add(new Coordinator(password, identification, name));
 	}
 
-	public void addSubject(String semester, String subject) {
-		searchSemester(Byte.valueOf(semester)).addSubject(
-				searchSubject(subject));
-	}
-
-	public void assignGroup(String professor, String subject) {
+	public void assignGroup(String professor, String subject, String groupNumber) {
 		Professor professorResult = searchProfessor(professor);
 		Subject subjectResult = searchSubject(subject);
-		professorResult.addGroup(searchSubject(subject));
+		professorResult.addGroup(searchSubject(subject),Integer.parseInt(groupNumber));
 		subjectResult.addProfessor(professorResult);
 	}
 
-	public void addLesson(String day, String begin, String end, String group) {
+	public void addLesson(String day, String begin, String end, String group, String subject) {
 		((Professor) userSession).addLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
-				Integer.parseInt(group));
+				Integer.parseInt(group),subject);
 	}
 
 	public void addLesson(String professor, String day, String begin, String end, 
-			String group) {
-		searchProfessor(professor).addLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
-				Integer.parseInt(group));
+			String group, String subject) {
+		searchProfessor(professor).addLesson(day.charAt(0),begin.charAt(0),end.charAt(0),
+				Integer.parseInt(group),subject);
 	}
 
-	public void removeLesson(String day, String begin, String end, String group) {
-		((Professor) userSession).removeLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
-				Integer.parseInt(group));
+	public void removeLesson(String day, String begin, String end, String group, String subject) {
+		((Professor) userSession).removeLesson(day.charAt(0),begin.charAt(0),end.charAt(0),
+				Integer.parseInt(group),subject);
 	}
 
 	public void removeLesson(String professor, String day, String begin, String end,
-			String group) {
-		searchProfessor(professor).removeLesson(day.charAt(0), begin.charAt(0), end.charAt(0),
-				Integer.parseInt(group));
+			String group, String subject) {
+		searchProfessor(professor).removeLesson(day.charAt(0),begin.charAt(0),end.charAt(0),
+				Integer.parseInt(group),subject);
 	}
 
 	public void clearSemester(String semester) {
 
+	}
+	
+	public ArrayList<String> buildSemesterSchedule(String semester) {
+		return searchSemester(Byte.valueOf(semester)).buildSchedule(classRooms);
 	}
 
 	public Person login(String login, String password) {
@@ -173,4 +171,72 @@ public class GUIController {
 		return null;
 	}
 
+	public void initialize() {
+		this.addClassRoom("Windows", "Prac1", "Este", "30", "1");
+		this.addClassRoom("Windows", "Prac2", "Este", "30", "2");
+		this.addClassRoom("Linux", "Prac3", "Este", "30", "3");
+		this.addClassRoom("Linux", "Prac4", "Este", "30", "4");
+		this.addClassRoom(true, true, "Theo1", "Sur", "25", "5");
+		this.addClassRoom(true, true, "Theo2", "Sur", "25", "6");
+		this.addClassRoom(true, true, "Theo3", "Sur", "25", "7");
+		this.addClassRoom(true, true, "Theo4", "Sur", "25", "8");
+		this.addDepartment("Computación");
+		this.addDepartment("Ciencias y Letras");
+		this.addProfessor("12345", "206890680", "Ronny", "Computación");
+		this.addProfessor("12345", "206890681", "Libardo", "Computación");
+		this.addProfessor("12345", "206890682", "Harvey", "Computación");
+		this.addProfessor("12345", "206890683", "Mauricio", "Computación");
+		this.addProfessor("12345", "206890684", "Leonardo", "Computación");
+		this.addProfessor("12345", "206890685", "Óscar", "Computación");
+		this.addProfessor("12345", "206890686", "Lorena", "Computación");
+		this.addCoordinator("123456", "206890684", "Leonardo");
+		this.addPracticalSubject("Windows", "PracS1", "4");
+		this.addPracticalSubject("MAC", "PracS2", "4");
+		this.addPracticalSubject("Windows", "PracS3", "4");
+		this.addTheoreticalSubject("http://www.myTheoreticalSubject1.com", "TheoS1", "4");
+		this.addTheoreticalSubject("http://www.myTheoreticalSubject2.com", "TheoS2", "4");
+		this.addTheoreticalSubject("http://www.myTheoreticalSubject3.com", "TheoS3", "4");
+		this.addSemester("1");
+		this.addSemester("2");
+		this.addSemester("3");
+		this.addSubjectToSemester("PracS1", "1");
+		this.addSubjectToSemester("PracS2", "1");
+		this.addSubjectToSemester("PracS3", "1");
+		this.addSubjectToSemester("TheoS1", "1");
+		this.addSubjectToSemester("TheoS2", "1");
+		this.addSubjectToSemester("TheoS3", "1");
+		this.assignGroup("206890680", "PracS1", "1");
+		this.assignGroup("206890680", "PracS1", "2");
+		this.assignGroup("206890681", "PracS2", "1");
+		this.assignGroup("206890681", "TheoS2", "1");
+		this.assignGroup("206890682", "PracS2", "2");
+		this.assignGroup("206890682", "PracS1", "3");
+		this.assignGroup("206890686", "PracS3", "1");
+		this.assignGroup("206890686", "TheoS1", "1");
+		this.assignGroup("206890685", "TheoS1", "2");
+		this.assignGroup("206890685", "TheoS3", "1");
+		this.assignGroup("206890685", "PracS2", "3");
+		this.addLesson("206890680", "L", "A", "B", "1", "PracS1");
+		this.addLesson("206890680", "K", "B", "C", "1", "PracS1");
+		this.addLesson("206890680", "M", "A", "B", "2", "PracS1");
+		this.addLesson("206890680", "M", "B", "C", "2", "PracS1");
+		this.addLesson("206890681", "L", "A", "B", "1", "PracS2");
+		this.addLesson("206890681", "L", "B", "C", "1", "PracS2");
+		this.addLesson("206890681", "M", "C", "D", "1", "TheoS2");
+		this.addLesson("206890681", "K", "C", "D", "1", "TheoS2");
+		this.addLesson("206890682", "L", "A", "B", "2", "PracS2");
+		this.addLesson("206890682", "K", "B", "C", "2", "PracS2");
+		this.addLesson("206890682", "L", "A", "B", "3", "PracS1");
+		this.addLesson("206890682", "M", "B", "C", "3", "PracS1");
+		this.addLesson("206890686", "L", "A", "B", "1", "PracS3");
+		this.addLesson("206890686", "M", "B", "C", "1", "PracS3");
+		this.addLesson("206890686", "M", "A", "B", "1", "TheoS1");
+		this.addLesson("206890686", "V", "A", "B", "1", "TheoS1");
+		this.addLesson("206890685", "M", "B", "C", "2", "TheoS1");
+		this.addLesson("206890685", "K", "B", "C", "2", "TheoS1");
+		this.addLesson("206890685", "M", "B", "C", "1", "TheoS3");
+		this.addLesson("206890685", "J", "B", "C", "1", "TheoS3");
+		this.addLesson("206890685", "L", "A", "B", "3", "PracS2");
+		this.addLesson("206890685", "M", "B", "C", "3", "PracS2");
+	}
 }

@@ -52,50 +52,96 @@ public class Semester {
 	public ArrayList<String> buildSchedule(ArrayList<ClassRoom> classRooms) {
 		this.schedules.add(new Schedule());
 		ArrayList<String> errors = new ArrayList<String>();
+		String groupErrors = "";
 		for (int s = 0; s < subjects.size(); s++) {
 			Subject subject = subjects.get(s);
 			for (int p = 0; p < subject.getProfessors().size(); p++) {
 				Professor professor = subject.getProfessors().get(p);
 				for (int g = 0; g < professor.getGroups().size(); g++) {
 					if (professor.getGroups().get(g).getSubject().getName().equals(subject.getName())) {
-						errors = checkForSchedule(professor.getGroups().get(g),classRooms);
-						if (resultCheckForSchedule.equals(""))
+						groupErrors = checkForSchedule(professor,professor.getGroups().get(g),classRooms);
+						if (groupErrors.equals(""))
 							continue;
 						else
-							errors.add(resultCheckForSchedule);
-					}	
+							errors.add(groupErrors);
+					}
 				}
 			}
 		}
 		return errors;
 	}
 	
-	private boolean verifySectionAvailability(char begin, char end, char day) {
-		return true;
+	private ScheduleSection verifyProfessorAvailabilityInSection(ScheduleSection section, String professorName) {
+		return section.verifyProfessorAvailabilityInSection(professorName);
 	}
 	
-	private ArrayList<String> checkForSchedule(Group group, ArrayList<ClassRoom> classRooms) {
+	private String checkForSchedule(Professor professor, Group group, ArrayList<ClassRoom> classRooms) {
 		ArrayList<String> errors = new ArrayList<String>();
+		int lessonsAssigmentState = 0;
 		for (int l = 0; l < group.getLessons().size(); l++) {
 			Lesson lesson = group.getLessons().get(l);
-			if (verifySectionAvailability(lesson.getBegin(),lesson.getEnd(),lesson.getDay())) {
-				if (checkForClassRoom(group.getSubject().getClass().getSimpleName(),classRooms,lesson.getBegin(),lesson.getEnd(),lesson.getDay()) == null) {
-					String resultExpandSearch = expandSearch(classRooms);
-					if (resultExpandSearch.equals(""))
-						continue;
+			ScheduleSection sectionAvailability = verifyProfessorAvailabilityInSection(searchSection(lesson.getDay(),lesson.getBegin(),lesson.getEnd()),professor.getName());
+			if (sectionAvailability != null) {
+				ClassRoom availableClassRoom = checkForClassRoom(group.getSubject().getClass().getSimpleName(),classRooms,lesson.getBegin(),lesson.getEnd(),lesson.getDay());
+				if (availableClassRoom != null) {
+					sectionAvailability.addGroupData(availableClassRoom, professor, group.getSubject(), group.getGroupNumber());
+					availableClassRoom.discardAvailability(lesson.getDay(),lesson.getBegin(),lesson.getEnd());
+					if (l == group.getLessons().size() - 1) {
+						if (lessonsAssigmentState == 0)
+							lessonsAssigmentState = 2;
+						else
+							lessonsAssigmentState = 4;
+					}
 					else
-						errors.add(resultExpandSearch);
+						lessonsAssigmentState = 1;
+					continue;
+				}
+			}
+			String resultExpandSearch = expandSearch(lesson,group,classRooms,group.getSubject().getClass().getSimpleName(),professor);
+			if (resultExpandSearch.equals("")) {
+				if (l == group.getLessons().size() - 1) {
+					if (lessonsAssigmentState == 0)
+						lessonsAssigmentState = 2;
+					else
+						lessonsAssigmentState = 3;
+				}
+				else
+					lessonsAssigmentState = 1;
+				continue;
+			}
+		}
+		switch (lessonsAssigmentState) {
+		case 0:
+			return "Ninguna de las lecciones del grupo " + group.getGroupNumber() + " de " + group.getSubject().getName() + " pudo ser asignada.";
+		case 1:
+			return ":La segunda lección del grupo " + group.getGroupNumber() + " de " + group.getSubject().getName() + " no pudo ser asignada.";
+		case 2:
+			return "La primera lección del grupo " + group.getGroupNumber() + " de " + group.getSubject().getName() + " no pudo ser asignada.";
+		case 3:
+			return "";
+		}
+		return "";
+	}
+	
+	private String expandSearch(Lesson lesson, Group group, ArrayList<ClassRoom> classRooms, String classRoomType, Professor professor) {
+		Schedule schedule = schedules.get(0);
+		ArrayList<ScheduleSection> sections = schedule.getSections();
+		for (int s = 0; s < sections.size(); s++) {
+			ScheduleSection sectionAvailability = verifyProfessorAvailabilityInSection(sections.get(s),professor.getName());
+			if (sectionAvailability != null) {
+				ClassRoom availableClassRoom = checkForClassRoom(classRoomType,classRooms,sections.get(s).getBegin(),sections.get(s).getEnd(),sections.get(s).getDay());
+				if (availableClassRoom != null) {
+					sectionAvailability.addGroupData(availableClassRoom, professor, group.getSubject(), group.getGroupNumber());
+					availableClassRoom.discardAvailability(lesson.getDay(),lesson.getBegin(),lesson.getEnd());
+					return "";
 				}
 				else
 					continue;
 			}
-			String resultExpandSearch = expandSearch(classRooms);
-			if (resultExpandSearch.equals(""))
-				continue;
 			else
-				errors.add(resultExpandSearch);
+				continue;
 		}
-		return null;
+		return "error";
 	}
 	
 	private ClassRoom checkForClassRoom(String classRoomType, ArrayList<ClassRoom> classRooms, char begin, char end, char day) {
@@ -123,7 +169,13 @@ public class Semester {
 		return false;
 	}
 	
-	private String expandSearch(ArrayList<ClassRoom> classRooms) {
-		return "";
+	private ScheduleSection searchSection (char day, char begin, char end) {
+		Schedule schedule = schedules.get(0);
+		ArrayList<ScheduleSection> sections = schedule.getSections();
+		for (int s = 0; s < sections.size(); s++) {
+			if ((sections.get(s).getDay() == day)&&(sections.get(s).getBegin() == begin)&&(sections.get(s).getEnd() == end))
+				return sections.get(s);
+		}
+		return null;
 	}
 }

@@ -8,12 +8,10 @@ public abstract class Subject {
 	private String name;
 	private byte credits;
 	private ArrayList<Professor> professors = new ArrayList<Professor>();
-	private ClassRoom classRoom;
 	
-	public Subject(String name, byte credits, ClassRoom classRoom) {
+	public Subject(String name, byte credits) {
 		this.name = name;
 		this.credits = credits;
-		this.classRoom = classRoom;
 	}
 
 	/**
@@ -58,25 +56,11 @@ public abstract class Subject {
 	 * @uml.property  name="professor"
 	 */
 	public void addProfessor(Professor professor) {
+		for (int p = 0; p < professors.size(); p++) {
+			if (professor.getIdentification().equals(professors.get(p).getIdentification()))
+				return;
+		}
 		this.professors.add(professor);
-	}
-
-	/**
-	 * Getter of the property <tt>classRoom</tt>
-	 * @return  Returns the classRoom.
-	 * @uml.property  name="classRoom"
-	 */
-	public ClassRoom getClassRoom() {
-		return classRoom;
-	}
-
-	/**
-	 * Setter of the property <tt>classRoom</tt>
-	 * @param classRoom  The classRoom to set.
-	 * @uml.property  name="classRoom"
-	 */
-	public void setClassRoom(ClassRoom classRoom) {
-		this.classRoom = classRoom;
 	}
 
 	public ArrayList<Professor> getProfessors() {
