@@ -3,28 +3,18 @@ package Business;
 import Enviroment.ClassRoom;
 import Enviroment.Department;
 import Enviroment.Professor;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import Enviroment.*;
 
+/**
+ * 
+ * @author Ronny
+ *
+ */
 public class GUIController {
-
-	/**
-	 * @uml.property name="classRooms"
-	 * @uml.associationEnd multiplicity="(0 -1)"
-	 *                     inverse="main:Enviroment.ClassRoom"
-	 * @uml.property name="semesters"
-	 * @uml.associationEnd multiplicity="(0 -1)"
-	 *                     inverse="main:Enviroment.Semester"
-	 * @uml.property name="users"
-	 * @uml.associationEnd multiplicity="(0 -1)"
-	 *                     inverse="main:Enviroment.Person"
-	 * @uml.property name="subjects"
-	 * @uml.associationEnd multiplicity="(0 -1)"
-	 *                     inverse="main:Enviroment.Subject"
-	 */
+	
 	private ArrayList<ClassRoom> classRooms = new ArrayList<ClassRoom>();
 	private ArrayList<Subject> subjects = new ArrayList<Subject>();
 	private ArrayList<Semester> semesters = new ArrayList<Semester>();
@@ -34,12 +24,29 @@ public class GUIController {
 	private ArrayList<SupportMaterial> supportMaterial = new ArrayList<SupportMaterial>();
 	private Person userSession;
 
+	/**
+	 * Method to add a new practical classroom to the classRooms database.
+	 * @param operatingSystem Operating system installed in the machines.
+	 * @param name Specific name for the classroom.
+	 * @param location Specific location inside the campus.
+	 * @param capacity Amount of students it can attend.
+	 * @param number Number of the classroom.
+	 */
 	public void addClassRoom(String operatingSystem, String name,
 			String location, String capacity, String number) {
 		this.classRooms.add(new PracticalClassroom(name, location, Integer
 				.parseInt(capacity), Integer.parseInt(number)));
 	}
 
+	/**
+	 * Method to add a new theoretical classroom to the classRooms database.
+	 * @param airConditioning Indicates whether it has air conditioning or not.
+	 * @param multimedia Indicates whether it has multimedia equipment or not.
+	 * @param name Specific name for the classroom.
+	 * @param location Specific location inside the campus.
+	 * @param capacity Amount of students it can attend.
+	 * @param number Number of the classroom.
+	 */
 	public void addClassRoom(Boolean airConditioning, Boolean multimedia,
 			String name, String location, String capacity, String number) {
 		this.classRooms.add(new TheoreticalClassroom(airConditioning,
@@ -47,25 +54,50 @@ public class GUIController {
 						.parseInt(number)));
 	}
 
+	/**
+	 * Method that adds a new practical subject to the subjects database.
+	 * @param operatingSystem Operating system to be used in the subject.
+	 * @param name name of the subject.
+	 * @param credits Credits of the subject.
+	 */
 	public void addPracticalSubject(String operatingSystem, String name,
 			String credits) {
 		this.subjects.add(new Practical(operatingSystem, name, Byte
 				.valueOf(credits)));
 	}
 
+	/**
+	 * Method that adds a new theoretical subject to the subjects database.
+	 * @param webPage Webpage of the subject.
+	 * @param name Name of the subject.
+	 * @param credits Credits of the subject.
+	 */
 	public void addTheoreticalSubject(String webPage, String name,
 			String credits) {
 		this.subjects.add(new Theoretical(webPage, name, Byte.valueOf(credits)));
 	}
 
+	/**
+	 * Method that adds a new department to the departments database.
+	 * @param name Name of the department.
+	 */
 	public void addDepartment(String name) {
 		this.departments.add(new Department(name));
 	}
 
+	/**
+	 * Method that adds a new semester to the semesters.
+	 * @param number Number of the semester.
+	 */
 	public void addSemester(String number) {
 		this.semesters.add(new Semester(Byte.valueOf(number)));
 	}
 
+	/**
+	 * Method that adds a new subject to the semester.
+	 * @param subject Subject to be added.
+	 * @param semester Semester where the subject will be aded.
+	 */
 	public void addSubjectToSemester(String subject, String semester) {
 		searchSemester(Byte.valueOf(semester)).addSubject(searchSubject(subject));
 	}
