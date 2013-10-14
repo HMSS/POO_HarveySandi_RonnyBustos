@@ -30,6 +30,8 @@ public class GUIController {
 	private ArrayList<Semester> semesters = new ArrayList<Semester>();
 	private ArrayList<Person> users = new ArrayList<Person>();
 	private ArrayList<Department> departments = new ArrayList<Department>();
+	private ArrayList<TechnicalEquipment> technicalEquipment = new ArrayList<TechnicalEquipment>();
+	private ArrayList<SupportMaterial> supportMaterial = new ArrayList<SupportMaterial>();
 	private Person userSession;
 
 	public void addClassRoom(String operatingSystem, String name,
@@ -111,13 +113,23 @@ public class GUIController {
 		searchProfessor(professor).removeLesson(day.charAt(0),begin.charAt(0),end.charAt(0),
 				Integer.parseInt(group),subject);
 	}
-
-	public void clearSemester(String semester) {
-
-	}
 	
 	public ArrayList<String> buildSemesterSchedule(String semester) {
 		return searchSemester(Byte.valueOf(semester)).buildSchedule(classRooms);
+	}
+	
+	public void addTechnicalEquipmentToClassRoom(String[] technicalEquipment, String classRoom) {
+		PracticalClassroom resultClassRoom = ((PracticalClassroom)searchClassRoom(classRoom));
+		for (int t = 0; t < technicalEquipment.length; t++) {
+			resultClassRoom.addTechnicalEquipment(searchTechnicalEquipment(technicalEquipment[t]));
+		}
+	}
+	
+	public void addSupportMaterialToSubject(String[] supportMaterial, String subject) {
+		Practical resultSubject = ((Practical)searchSubject(subject));
+		for (int s = 0; s < supportMaterial.length; s++) {
+			resultSubject.addSupportMaterial(searchSupportMaterial(supportMaterial[s]));
+		}
 	}
 
 	public Person login(String login, String password) {
@@ -169,6 +181,54 @@ public class GUIController {
 				return subjects.get(i);
 		}
 		return null;
+	}
+	
+	public TechnicalEquipment searchTechnicalEquipment(String technicalEquipment) {
+		for (int i = 0; i < this.technicalEquipment.size(); i++) {
+			if (this.technicalEquipment.get(i).getName().equals(technicalEquipment))
+				return this.technicalEquipment.get(i);
+		}
+		return null;
+	}
+	
+	public SupportMaterial searchSupportMaterial(String supportMaterial) {
+		for (int i = 0; i < this.supportMaterial.size(); i++) {
+			if (this.supportMaterial.get(i).getName().equals(supportMaterial))
+				return this.supportMaterial.get(i);
+		}
+		return null;
+	}
+	
+	public void addTechnicalEquipment(String name, String amount) {
+		this.technicalEquipment.add(new TechnicalEquipment(name,Integer.parseInt(amount)));
+	}
+	
+	public void addSupportMaterial(String name) {
+		this.supportMaterial.add(new SupportMaterial(name));
+	}
+	
+	public ArrayList<ClassRoom> getClassRooms() {
+		return this.classRooms;
+	}
+	
+	public ArrayList<Semester> getSemesters() {
+		return this.semesters;
+	}
+	
+	public ArrayList<Subject> getSubjects() {
+		return this.subjects;
+	}
+	
+	public ArrayList<Department> getDepartments() {
+		return this.departments;
+	}
+	
+	public ArrayList<TechnicalEquipment> getTechnicalEquipment() {
+		return this.technicalEquipment;
+	}
+	
+	public ArrayList<SupportMaterial> getSupportMaterial() {
+		return this.supportMaterial;
 	}
 
 	public void initialize() {

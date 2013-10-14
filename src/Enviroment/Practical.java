@@ -40,5 +40,9 @@ public class Practical extends Subject {
 	 * @uml.associationEnd  multiplicity="(0 -1)" inverse="practical:Enviroment.SupportMaterial"
 	 */
 	private ArrayList<SupportMaterial> supportMaterial = new ArrayList<SupportMaterial>();
+	
+	public void addSupportMaterial(SupportMaterial supportMaterial) {
+		this.supportMaterial.add(supportMaterial);
+	}
 
 }

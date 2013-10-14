@@ -85,12 +85,11 @@ public class Semester {
 				ClassRoom availableClassRoom = checkForClassRoom(group.getSubject().getClass().getSimpleName(),classRooms,lesson.getBegin(),lesson.getEnd(),lesson.getDay());
 				if (availableClassRoom != null) {
 					sectionAvailability.addGroupData(availableClassRoom, professor, group.getSubject(), group.getGroupNumber());
-					availableClassRoom.discardAvailability(lesson.getDay(),lesson.getBegin(),lesson.getEnd());
 					if (l == group.getLessons().size() - 1) {
 						if (lessonsAssigmentState == 0)
 							lessonsAssigmentState = 2;
 						else
-							lessonsAssigmentState = 4;
+							lessonsAssigmentState = 3;
 					}
 					else
 						lessonsAssigmentState = 1;
@@ -107,7 +106,6 @@ public class Semester {
 				}
 				else
 					lessonsAssigmentState = 1;
-				continue;
 			}
 		}
 		switch (lessonsAssigmentState) {
@@ -119,8 +117,9 @@ public class Semester {
 			return "La primera lección del grupo " + group.getGroupNumber() + " de " + group.getSubject().getName() + " no pudo ser asignada.";
 		case 3:
 			return "";
+		default: 
+			return "";
 		}
-		return "";
 	}
 	
 	private String expandSearch(Lesson lesson, Group group, ArrayList<ClassRoom> classRooms, String classRoomType, Professor professor) {
@@ -147,7 +146,7 @@ public class Semester {
 	private ClassRoom checkForClassRoom(String classRoomType, ArrayList<ClassRoom> classRooms, char begin, char end, char day) {
 		for (int c = 0; c < classRooms.size(); c++) {
 			ClassRoom classRoom = classRooms.get(c);
-			if (classRoom.getClass().getSimpleName().equals(classRoomType)) {
+			if (classRoom.getClass().getSimpleName().equals(classRoomType + "Classroom")) {
 				if (isClassRoomAvailable(classRoom.getAvailability(),begin,end,day)) { 
 					classRoom.discardAvailability(day, begin, end);
 					return classRoom;
