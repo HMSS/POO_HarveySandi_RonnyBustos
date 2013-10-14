@@ -159,6 +159,11 @@ public class addAula extends javax.swing.JFrame {
         jMenu2.setText("Archivo");
 
         jMenuItem2.setText("Salir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar2.add(jMenu2);
@@ -381,6 +386,14 @@ public class addAula extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_batagregarActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+    	  admin ventana = new admin(brain);
+    	  ventana.setLocationRelativeTo(null);
+    	  this.dispose();
+    	  ventana.setVisible(true);
+    }  
+    
+    
     /**
      * @param args the command line arguments
      */

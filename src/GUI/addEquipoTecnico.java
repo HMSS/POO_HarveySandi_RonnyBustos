@@ -4,9 +4,14 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.Department;
+import Enviroment.TechnicalEquipment;
 
 /**
  *
@@ -20,6 +25,7 @@ public class addEquipoTecnico extends javax.swing.JFrame {
     public addEquipoTecnico(GUIController controller) {
     	brain = controller;
         initComponents();
+        actualizarEquipo();
     }
 
     GUIController brain = new GUIController();
@@ -58,7 +64,11 @@ public class addEquipoTecnico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lequipo);
 
         bsalir.setText("Salir");
-
+        bsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsalirActionPerformed(evt);
+            }
+        });
         bagregar.setText("Agregar");
         bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +143,14 @@ public class addEquipoTecnico extends javax.swing.JFrame {
                  String st = "Todos los espacios son requeridos";
                  JOptionPane.showMessageDialog(null, st);
             }
+            else{
+            	brain.addTechnicalEquipment(nombre, String.valueOf(cantidad));
+            	String st="Agregado con Èxito";
+                JOptionPane.showMessageDialog(null,st);
+                tfnombre.setText("");
+                tfcantidad.setText("");
+            	actualizarEquipo();
+            }
         }
         catch (NumberFormatException e) {
             String st = "La cantidad debe ser de tipo num√©rico";
@@ -140,6 +158,24 @@ public class addEquipoTecnico extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bagregarActionPerformed
 
+    private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    	admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
+    }   
+    
+    public void actualizarEquipo(){
+    	DefaultListModel item = new DefaultListModel();
+    	ArrayList<TechnicalEquipment>  temp =  brain.getTechnicalEquipment();
+		for (int i = 0; i < temp.size(); i++) {
+			item.add(item.getSize(),temp.get(i).getName());
+		}
+		lequipo.setModel(item);
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */

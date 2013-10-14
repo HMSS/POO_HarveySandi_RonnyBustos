@@ -4,9 +4,13 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.Department;
 
 /**
  *
@@ -20,6 +24,7 @@ public class addDepartamento extends javax.swing.JFrame {
     public addDepartamento(GUIController controller) {
     	brain = controller;
         initComponents();
+        actualizarDepartamentos();
     }
 
     GUIController brain = new GUIController();
@@ -56,7 +61,11 @@ public class addDepartamento extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ldepartamentos);
 
         bsalir.setText("Salir");
-
+        bsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsalirActionPerformed(evt);
+            }
+        });
         bagregar.setText("Agregar");
         bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,9 +127,33 @@ public class addDepartamento extends javax.swing.JFrame {
             String st = "El nombre del departamento es requerido";
             JOptionPane.showMessageDialog(null, st);
         }
+        else{
+        	brain.addDepartment(nombre);
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+            tfnombre.setText("");
+            actualizarDepartamentos();
+        }
 
     }//GEN-LAST:event_bagregarActionPerformed
 
+    private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    	admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
+    }  
+    
+    public void actualizarDepartamentos(){	
+    	DefaultListModel item = new DefaultListModel();
+    	ArrayList<Department>  temp =  brain.getDepartments();
+		for (int i = 0; i < temp.size(); i++) {
+			item.add(item.getSize(),temp.get(i).getName());
+		}
+		ldepartamentos.setModel(item);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

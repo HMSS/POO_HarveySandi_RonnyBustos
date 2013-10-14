@@ -4,9 +4,12 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.Department;
 
 /**
  *
@@ -161,11 +164,22 @@ public class addProfesor extends javax.swing.JFrame {
             String st="Todos los datos son necesarios";
             JOptionPane.showMessageDialog(null,st);
         }
+        else{        	
+        	brain.addProfessor(contrasena, id, nombre, departamento);
+        	String st="Agregado con Èxito";
+            JOptionPane.showMessageDialog(null,st);
+            tfidentificacion.setText("");
+            tfnombre.setText("");
+            tfcontrasena.setText("");
+        }
 
     }//GEN-LAST:event_bagregarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tfcontrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfcontrase√±aActionPerformed
@@ -174,6 +188,10 @@ public class addProfesor extends javax.swing.JFrame {
 
     public void actualizarDepartamentos(){	
     	comboboxdepartamento.removeAllItems();
+    	ArrayList<Department>  temp =  brain.getDepartments();
+		for (int i = 0; i < temp.size(); i++) {
+			comboboxdepartamento.addItem(temp.get(i).getName());
+		}
     }
     
     

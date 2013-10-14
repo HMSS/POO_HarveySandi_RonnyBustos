@@ -4,9 +4,14 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.SupportMaterial;
+import Enviroment.TechnicalEquipment;
 
 /**
  *
@@ -20,6 +25,7 @@ public class addMaterialSoporte extends javax.swing.JFrame {
     public addMaterialSoporte(GUIController controller) {
     	brain = controller;
         initComponents();
+        actualizarMaterial();
     }
     
     GUIController brain = new GUIController();
@@ -47,7 +53,11 @@ public class addMaterialSoporte extends javax.swing.JFrame {
         jLabel2.setText("Nombre del material:");
 
         bsalir.setText("Salir");
-
+        bsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsalirActionPerformed(evt);
+            }
+        });
         bagregar.setText("Agregar");
         bagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,9 +130,35 @@ public class addMaterialSoporte extends javax.swing.JFrame {
             String st = "Todos los espacios son requeridos";
             JOptionPane.showMessageDialog(null, st);
         }
+        else{
+        	brain.addSupportMaterial(nombre);
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+            tfnombre.setText("");
+        	actualizarMaterial();
+        }
 
     }//GEN-LAST:event_bagregarActionPerformed
 
+    
+    private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    	admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
+    }     
+    
+    
+    public void actualizarMaterial(){
+    	DefaultListModel item = new DefaultListModel();
+    	ArrayList<SupportMaterial>  temp =  brain.getSupportMaterial();
+		for (int i = 0; i < temp.size(); i++) {
+			item.add(item.getSize(),temp.get(i).getName());
+		}
+		lmaterial.setModel(item);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */

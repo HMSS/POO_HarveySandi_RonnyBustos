@@ -166,6 +166,14 @@ public class GUIController {
 		}
 		return null;
 	}
+	
+	public Professor searchProfessorbyName(String professor) {
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getName().equals(professor))
+				return (Professor) users.get(i);
+		}
+		return null;
+	}
 
 	public Semester searchSemester(byte semester) {
 		for (int i = 0; i < semesters.size(); i++) {
@@ -229,6 +237,10 @@ public class GUIController {
 	
 	public ArrayList<SupportMaterial> getSupportMaterial() {
 		return this.supportMaterial;
+	}
+	
+	public ArrayList<Person> getPerson(){
+		return this.users;
 	}
 
 	public void initialize() {

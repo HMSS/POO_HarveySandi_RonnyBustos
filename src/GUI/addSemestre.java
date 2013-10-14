@@ -4,9 +4,13 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.Semester;
 
 /**
  *
@@ -20,6 +24,7 @@ public class addSemestre extends javax.swing.JFrame {
     public addSemestre(GUIController controller) {
     	brain = controller;
         initComponents();
+        actualizarSemestres();
     }
     
     GUIController brain = new GUIController();
@@ -64,7 +69,11 @@ public class addSemestre extends javax.swing.JFrame {
         });
 
         bsalir.setText("Salir");
-
+        bsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bsalirActionPerformed(evt);
+            }
+        });
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,14 +125,37 @@ public class addSemestre extends javax.swing.JFrame {
 
     private void bagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bagregarActionPerformed
         try {
-            int capacidad = Integer.valueOf(tfnumerosemestre.getText());           
+            int capacidad = Integer.valueOf(tfnumerosemestre.getText());  
+            brain.addSemester(tfnumerosemestre.getText());
+            String st="Agregado con �xito";
+            JOptionPane.showMessageDialog(null,st);
+            tfnumerosemestre.setText("");
+            actualizarSemestres();
             }
          catch (NumberFormatException e) {
             String st = "El número de semestre debe ser de tipo numérico";
             JOptionPane.showMessageDialog(null, st);
         }
+       
     }//GEN-LAST:event_bagregarActionPerformed
 
+    private void bsalirActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    	  admin ventana = new admin(brain);
+          ventana.setLocationRelativeTo(null);
+          this.dispose();
+          ventana.setVisible(true);
+    } 
+    
+    
+    public void actualizarSemestres(){
+    	DefaultListModel item = new DefaultListModel();
+    	ArrayList<Semester> temp = brain.getSemesters();
+    	for (int i = 0; i < temp.size(); i++) {
+    		item.add(item.getSize(), temp.get(i).getNumber());
+    	}
+    	lsemestres.setModel(item);
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -141,11 +141,22 @@ public class addEstudiante extends javax.swing.JFrame {
             String st="Todos los datos son necesarios";
             JOptionPane.showMessageDialog(null,st);
         }
+        else{
+        	brain.addStudent(id, nombre, contrasena);
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+            tfidentificacion.setText("");
+            tfnombre.setText("");
+            tfcontrasena.setText("");
+        }
 
     }//GEN-LAST:event_bagregarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

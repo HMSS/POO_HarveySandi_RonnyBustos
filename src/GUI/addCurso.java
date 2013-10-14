@@ -4,9 +4,12 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import Business.GUIController;
+import Enviroment.ClassRoom;
 
 /**
  *
@@ -20,6 +23,7 @@ public class addCurso extends javax.swing.JFrame {
     public addCurso(GUIController controller) {
     	brain = controller;
         initComponents();
+        actualizarAulas();
     }
     
     GUIController brain = new GUIController();
@@ -143,6 +147,11 @@ public class addCurso extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -296,6 +305,14 @@ public class addCurso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    	admin ventana = new admin(brain);
+        ventana.setLocationRelativeTo(null);
+        this.dispose();
+        ventana.setVisible(true);
+    } 
+    
+    
     private void bctagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bctagregarActionPerformed
         String nombre = tfctnombre.getText();
         int creditos = Integer.valueOf(cbctcreditos.getSelectedItem().toString());
@@ -305,6 +322,15 @@ public class addCurso extends javax.swing.JFrame {
         if(nombre.equals("") || pagina.equals("")){
              String st="Todos los datos son necesarios";
              JOptionPane.showMessageDialog(null,st);
+        }
+        else{
+        	brain.addTheoreticalSubject(pagina, nombre, String.valueOf(creditos));
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+        	tfctnombre.setText("");
+        	cbctcreditos.setSelectedIndex(0);
+        	tfctpagina.setText("");
+        	cbctaula.setSelectedIndex(0);
         }
     }//GEN-LAST:event_bctagregarActionPerformed
 
@@ -318,6 +344,15 @@ public class addCurso extends javax.swing.JFrame {
             String st="Todos los datos son necesarios";
             JOptionPane.showMessageDialog(null,st);
         }
+        else{
+        	brain.addPracticalSubject(SO, nombre, String.valueOf(creditos));
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+        	tfcpnombre.setText("");
+        	cbcpcreditos.setSelectedIndex(0);
+        	cbcpaula.setSelectedIndex(0);
+        	tfcpsistemaoperativo.setText("");
+        }
     }//GEN-LAST:event_bcpagregarActionPerformed
 
     private void bcodagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bcodagregarActionPerformed
@@ -330,8 +365,39 @@ public class addCurso extends javax.swing.JFrame {
             String st="Todos los datos son necesarios";
             JOptionPane.showMessageDialog(null,st);
         }
+        else{/*
+        	brain.
+        	String st="Agregado con éxito";
+            JOptionPane.showMessageDialog(null,st);
+        	tfcpnombre.setText("");
+        	cbcpcreditos.setSelectedIndex(0);
+        	cbcpaula.setSelectedIndex(0);
+        	tfcpsistemaoperativo.setText("");*/
+        }
     }//GEN-LAST:event_bcodagregarActionPerformed
 
+    public void actualizarAulas(){
+    	cbctaula.removeAllItems();
+    	cbcpaula.removeAllItems();
+    	cbcodaula.removeAllItems();
+    	ArrayList<ClassRoom> temp = brain.getClassRooms();
+    	for (int i = 0; i < temp.size(); i++) {
+			//comboboxdepartamento.addItem(temp.get(i).getName());
+    		if(temp.get(i).getClass().getSimpleName().equals("TheoreticalClassroom")){
+    			cbctaula.addItem(temp.get(i).getName());
+    			cbcodaula.addItem(temp.get(i).getName()); 
+    		}
+    		else{
+    			if(temp.get(i).getClass().getSimpleName().equals("PracticalClassroom")){
+    				cbcpaula.addItem(temp.get(i).getName());  
+    				cbcodaula.addItem(temp.get(i).getName()); 
+    			}   	
+    			
+    		}
+		}
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
