@@ -178,7 +178,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that remove one lesson.
+	 * Method that removes one lesson.
 	 * @param day Day that receive the lesson.
 	 * @param begin Time that start the lesson.
 	 * @param end Time of the end lesson.
@@ -191,11 +191,11 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that remove one lesson.
+	 * Method that removes one lesson from a professor group.
 	 * @param professor Identification of the professor
-	 * @param day Day that receive the lesson.
-	 * @param begin Time that start the lesson.
-	 * @param end Time of the end lesson.
+	 * @param day Day of the lesson.
+	 * @param begin Time that the lesson starts.
+	 * @param end Time that the lesson ends.
 	 * @param group Number of the group.
 	 * @param subject Name of the subject.
 	 */
@@ -206,17 +206,17 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that generate the schedule by information of the database.
+	 * Method that generate the schedule for a specified semester
 	 * @param semester Number of the semester.
-	 * @return Returns the errors found during the building process
+	 * @return Returns the errors found during the building of the schedule
 	 */
 	public ArrayList<String> buildSemesterSchedule(String semester) {
 		return searchSemester(Byte.valueOf(semester)).buildSchedule(classRooms);
 	}
 	
 	/**
-	 * Method that adds a Technical Equipment to classroom.
-	 * @param technicalEquipment One or more technical equipment to add to a classroom.
+	 * Method that adds a technical equipment to a classroom.
+	 * @param technicalEquipment One or more technical equipment to add to the classroom.
 	 * @param classRoom Name of the classroom.
 	 */
 	public void addTechnicalEquipmentToClassRoom(String[] technicalEquipment, String classRoom) {
@@ -228,7 +228,7 @@ public class GUIController {
 	
 	/**
 	 * Method that adds a support material to a subject.
-	 * @param supportMaterial One or more support material to add to a subject.
+	 * @param supportMaterial One or more support material to add to the subject.
 	 * @param subject Name of the subject.
 	 */
 	public void addSupportMaterialToSubject(String[] supportMaterial, String subject) {
@@ -239,7 +239,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that make a identification and password validation of the user.
+	 * Method that validates an identification and password of an user.
 	 * @param login Identification of the user.
 	 * @param password Password of the user.
 	 * @return Returns the user.
@@ -256,7 +256,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that search a department.
+	 * Method that searchs for a department.
 	 * @param department Name of the department.
 	 * @return Returns the department.
 	 */
@@ -269,7 +269,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that search a classroom.
+	 * Method that searchs for a classroom.
 	 * @param classRoom Name of the classroom.
 	 * @return Return the classroom.
 	 */
@@ -282,7 +282,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that search a professor by identification.
+	 * Method that searchs for a professor by identification.
 	 * @param professor Identification of the professor.
 	 * @return Returns the professor.
 	 */
@@ -295,7 +295,7 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that search a professor by name.
+	 * Method that searchs for a professor by name.
 	 * @param professor Name of the professor.
 	 * @return Returns the professor.
 	 */
@@ -308,7 +308,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that search a professor.
+	 * Method that searchs for a semester.
 	 * @param semester Number of the semester.
 	 * @return Return the semester.
 	 */
@@ -321,7 +321,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that search a subject.
+	 * Method that searchs for a subject.
 	 * @param subject Name of the subject.
 	 * @return Returns the subject.
 	 */
@@ -334,7 +334,7 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that search a technical equipment.
+	 * Method that searchs a technical equipment.
 	 * @param technicalEquipment Name of the technical equipment.
 	 * @return Returns the equipment.
 	 */
@@ -347,7 +347,7 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that search a support material. 
+	 * Method that searchs a support material. 
 	 * @param supportMaterial Name of the support material.
 	 * @return Returns the support material.
 	 */
@@ -360,7 +360,7 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that adds new technical equipment database. 
+	 * Method that adds new technical equipment to the database. 
 	 * @param name Name of the technical equipment.
 	 * @param amount Amount of the technical equipment.
 	 */
@@ -369,7 +369,7 @@ public class GUIController {
 	}
 	
 	/**
-	 * Method that adds a new support material database.
+	 * Method that adds a new support material to the database.
 	 * @param name Name of the support material.
 	 */
 	public void addSupportMaterial(String name) {
@@ -433,7 +433,7 @@ public class GUIController {
 	}
 
 	/**
-	 * Method that adds new information of the database.
+	 * Method that adds new information to the database.
 	 */
 	public void initialize() {
 		this.addClassRoom("Windows", "Prac1", "Este", "30", "1");
