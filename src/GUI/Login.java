@@ -6,6 +6,9 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
+import Business.GUIController;
+import Enviroment.Person;
+
 /**
  *
  * @author Harvey
@@ -15,10 +18,11 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(GUIController controller) {
+    	brain = controller;
         initComponents();
     }
-
+    GUIController brain = new GUIController();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -150,6 +154,37 @@ public class Login extends javax.swing.JFrame {
             String st="Todos los datos son requeridos";
             JOptionPane.showMessageDialog(null,st);
         }
+        else{
+        	Person usuario;
+        	usuario = brain.login(user, password);
+        	if (usuario == null){
+        		String st="Datos incorrectos";
+                JOptionPane.showMessageDialog(null,st);
+        	}
+        	else{ // es coordinador
+        		if(usuario.getClass().getSimpleName().equals("Coordinator")){
+        			admin ventana = new admin(brain);
+        	        ventana.setLocationRelativeTo(null);
+        	        this.dispose();
+        	        ventana.setVisible(true);
+        		}
+        		else{ //es profesor
+        			if(usuario.getClass().getSimpleName().equals("Professor")){
+        				professor ventana = new professor(brain);
+            	        ventana.setLocationRelativeTo(null);
+            	        this.dispose();
+            	        ventana.setVisible(true);
+        			}
+        			else{//es estudiante
+        				student ventana = new student(brain);
+            	        ventana.setLocationRelativeTo(null);
+            	        this.dispose();
+            	        ventana.setVisible(true);
+        			}
+        		}
+        	}
+        	
+        }
     }//GEN-LAST:event_bentrarActionPerformed
 
     /**
@@ -179,12 +214,7 @@ public class Login extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bentrar;

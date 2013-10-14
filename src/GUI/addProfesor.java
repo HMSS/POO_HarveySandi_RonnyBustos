@@ -6,6 +6,8 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
+import Business.GUIController;
+
 /**
  *
  * @author Harvey
@@ -15,10 +17,13 @@ public class addProfesor extends javax.swing.JFrame {
     /**
      * Creates new form addProfesor
      */
-    public addProfesor() {
+    public addProfesor(GUIController controller) {
+    	brain = controller;    	
         initComponents();
+        actualizarDepartamentos();
     }
 
+    GUIController brain = new GUIController();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,6 +172,12 @@ public class addProfesor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfcontraseñaActionPerformed
 
+    public void actualizarDepartamentos(){	
+    	comboboxdepartamento.removeAllItems();
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -192,14 +203,7 @@ public class addProfesor extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(addProfesor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addProfesor().setVisible(true);
-            }
-        });
+        //</editor-fold>	
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bagregar;

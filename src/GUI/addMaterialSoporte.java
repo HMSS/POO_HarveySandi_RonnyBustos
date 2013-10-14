@@ -6,6 +6,8 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
+import Business.GUIController;
+
 /**
  *
  * @author Harvey
@@ -15,9 +17,12 @@ public class addMaterialSoporte extends javax.swing.JFrame {
     /**
      * Creates new form addMaterialSoporte
      */
-    public addMaterialSoporte() {
+    public addMaterialSoporte(GUIController controller) {
+    	brain = controller;
         initComponents();
     }
+    
+    GUIController brain = new GUIController();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -145,12 +150,7 @@ public class addMaterialSoporte extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addMaterialSoporte().setVisible(true);
-            }
-        });
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bagregar;

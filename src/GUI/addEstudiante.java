@@ -6,6 +6,8 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
+import Business.GUIController;
+
 /**
  *
  * @author Harvey
@@ -15,10 +17,12 @@ public class addEstudiante extends javax.swing.JFrame {
     /**
      * Creates new form addEstudiante
      */
-    public addEstudiante() {
+    public addEstudiante(GUIController controller) {
+    	brain = controller;
         initComponents();
     }
 
+    GUIController brain = new GUIController();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,12 +175,7 @@ public class addEstudiante extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new addEstudiante().setVisible(true);
-            }
-        });
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bagregar;

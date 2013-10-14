@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import Business.GUIController;
+
 /**
  *
  * @author Harvey
@@ -13,10 +15,12 @@ public class admin extends javax.swing.JFrame {
     /**
      * Creates new form admin
      */
-    public admin() {
+    public admin(GUIController controller) {
+    	brain = controller;
         initComponents();
     }
 
+    GUIController brain = new GUIController();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,10 +71,10 @@ public class admin extends javax.swing.JFrame {
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel1.setText("AÃ±adir un curso a un profesor");
+        jLabel1.setText("Añadir un curso a un profesor");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        jLabel3.setText("AÃ±adir un curso a un semestre");
+        jLabel3.setText("Añadir un curso a un semestre");
 
         jMenu1.setText("Archivo");
 
@@ -90,7 +94,7 @@ public class admin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("AÃ±adir");
+        jMenu2.setText("Añadir");
 
         jMenuItem1.setText("Profesor");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +155,7 @@ public class admin extends javax.swing.JFrame {
         jMenu2.add(jMenuItem7);
         jMenu2.add(jSeparator3);
 
-        jMenuItem8.setText("Equipo TÃ©cnico");
+        jMenuItem8.setText("Equipo Técnico");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
@@ -191,7 +195,7 @@ public class admin extends javax.swing.JFrame {
         jMenu3.add(jMenuItem16);
         jMenu3.add(jSeparator6);
 
-        jMenuItem17.setText("Equipo TÃ©cnico");
+        jMenuItem17.setText("Equipo Ténico");
         jMenu3.add(jMenuItem17);
 
         jMenuItem18.setText("Material de Soporte");
@@ -240,7 +244,7 @@ public class admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        addProfesor ventana = new addProfesor();
+        addProfesor ventana = new addProfesor(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);
@@ -255,56 +259,56 @@ public class admin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        addEstudiante ventana = new addEstudiante();
+        addEstudiante ventana = new addEstudiante(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        addAdmin ventana = new addAdmin();
+        addAdmin ventana = new addAdmin(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        addCurso ventana = new addCurso();
+        addCurso ventana = new addCurso(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        addSemestre ventana = new addSemestre();
+        addSemestre ventana = new addSemestre(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);      
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        addAula ventana = new addAula();
+        addAula ventana = new addAula(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);        
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        addDepartamento ventana = new addDepartamento();
+        addDepartamento ventana = new addDepartamento(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);     
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        addEquipoTecnico ventana = new addEquipoTecnico();
+        addEquipoTecnico ventana = new addEquipoTecnico(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);      
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        addMaterialSoporte ventana = new addMaterialSoporte();
+        addMaterialSoporte ventana = new addMaterialSoporte(brain);
         ventana.setLocationRelativeTo(null);
         this.dispose();
         ventana.setVisible(true);      
@@ -337,12 +341,7 @@ public class admin extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new admin().setVisible(true);
-            }
-        });
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
